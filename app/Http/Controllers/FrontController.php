@@ -1,0 +1,69 @@
+<?php
+
+namespace App\Http\Controllers;
+
+use Illuminate\Http\Request;
+use App\Product;
+use App\Categorie;
+use App\Size;
+
+class FrontController extends Controller
+{
+    //variable pour la pagination à 6 côté client
+    protected $paginate = 6;
+
+    //fonction index qui va renvoyer dans une vue tous les produits, page d'accueil
+    public function index(){
+
+        //récupère le nombre de produit de la sélection
+        $count = Product::count();
+
+        //récupère tous les produits par 6 du plus récent au moins récent
+		$products = Product::orderBy('created_at', 'desc')->paginate($this->paginate);
+
+        return view('front.index', ['products' => $products], ['count' => $count]);
+
+    }
+
+    //fonction indexMen qui va renvoyer dans une vue tous les produits de la catégorie homme, page Homme
+    public function indexMen(){
+
+        $count = Product::men()->count();
+
+        $products = Product::orderBy('created_at', 'desc')->men()->paginate($this->paginate);
+
+        return view('front.index', ['products' => $products], ['count' => $count]);
+
+    }
+
+    //fonction indexWomen qui va renvoyer dans une vue tous les produits de la catégorie femme, page Homme
+    public function indexWomen(){
+
+        $count = Product::women()->count();
+
+        $products = Product::orderBy('created_at', 'desc')->women()->paginate($this->paginate);
+
+        return view('front.index', ['products' => $products], ['count' => $count]);
+
+    }
+
+    //fonction indexSale qui va renvoyer dans une vue tous les produits de la catégorie sale, page Sale
+    public function indexSale(){
+
+        $count = Product::sale()->count();
+
+        $products = Product::orderBy('created_at', 'asc')->sale()->paginate($this->paginate);
+
+        return view('front.index', ['products' => $products], ['count' => $count]);
+
+    }
+
+    //fonction show qui va renvoyer dans une vue la fiche produit
+    public function show(int $id){
+
+        $product = Product::find($id);
+        $sizes = Size::pluck('name', 'id')->all();
+
+        return view('front.show', ['product' => $product, 'sizes' => $sizes]);
+    }
+}
