@@ -50,7 +50,7 @@ class ProductController extends Controller
     public function store(Request $request)
     {
         $this->validate($request, [
-            'name' => 'required',
+            'name' => 'required|between:5,100',
             'description' => 'required|string',
             'price' => 'required|between:0,99.99',
             'reference' => 'required|alpha_num',
@@ -122,7 +122,7 @@ class ProductController extends Controller
     public function update(Request $request, $id)
     {
         $this->validate($request, [
-            'name' => 'required',
+            'name' => 'required|between:5,100',
             'description' => 'required|string',
             'price' => 'required|between:0,99.99',
             'reference' => 'required|alpha_num',
