@@ -58,6 +58,7 @@ class ProductController extends Controller
             'categorie_id' => 'integer',
             'status' => 'in:En solde,standard',
             'picture' => 'image|max:3000',
+            'visibility' => 'in:Publié,Non-Publié'
         ]);
 
         $product = Product::create($request->all());
@@ -128,7 +129,9 @@ class ProductController extends Controller
             'reference' => 'required|alpha_num',
             'size_id' => 'integer',
             'categorie_id' => 'integer',
-            'status' => 'in:En solde,standard'
+            'status' => 'in:En solde,standard',
+            'picture' => 'image|max:3000',
+            'visibility' => 'in:Publié,Non-Publié'
         ]);
 
         $product = Product::find($id); // associé les fillables

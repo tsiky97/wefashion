@@ -32,7 +32,7 @@
 		                @endif
 		      		</td>
 				    <td>
-				    	<button type="button" class="btn btn-secondary"><a href="{{route('product.edit', $product->id)}}">Modifier</a></button>
+				    	<button type="button" class="btn btn-secondary button-modify"><a href="{{route('product.edit', $product->id)}}">Modifier</a></button>
                 		<form class="delete" method="POST" action="{{route('product.destroy', $product->id)}}">
 			                {{ method_field('DELETE') }}
 			                {{ csrf_field() }}

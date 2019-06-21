@@ -6,6 +6,9 @@
             <li class="nav-item list-inline-item">
                 <a class="nav-link" href="{{route('product.index')}}">Dashboard</a>
             </li> 
+            <li class="nav-item list-inline-item">
+                <a class="nav-link" href="{{route('categorie.index')}}">Catégories</a>
+            </li>
             @else 
             <li class="nav-item list-inline-item">
                 <a class="nav-link" href="{{url('/sale')}}">Soldes</a>

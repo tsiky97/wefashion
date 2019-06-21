@@ -54,7 +54,7 @@
     </div>
 
     <div class="form-row">
-      <div class="form-group col-md-6">
+      <div class="form-group col-md-2">
         <label for="status">Choisissiez le statut</label>
         <div class="form-check">
           <input class="form-check-input" @if(old('status')=='En solde') checked @endif type="radio" name="status" value="En solde" checked>
@@ -66,6 +66,21 @@
           <input class="form-check-input" @if(old('status')=='standard') checked @endif type="radio" name="status" value="standard">
           <label class="form-check-label" for="standard">
             Standard
+          </label>
+        </div>
+      </div>
+      <div class="form-group col-md-4">
+        <label for="visibility">Choisissiez la visibilité du produit</label>
+        <div class="form-check">
+          <input class="form-check-input" @if(old('visibility')=='Publié') checked @endif type="radio" name="visibility" value="Publié" checked>
+          <label class="form-check-label" for="Publié">
+            Publié
+          </label>
+        </div>
+        <div class="form-check">
+          <input class="form-check-input" @if(old('visibility')=='Non-Publié') checked @endif type="radio" name="visibility" value="Non-Publié">
+          <label class="form-check-label" for="Non-publié">
+            Non-publié
           </label>
         </div>
       </div>
