@@ -6,6 +6,7 @@ use Illuminate\Http\Request;
 use App\Product;
 use App\Categorie;
 use App\Size;
+use Cache;
 
 class FrontController extends Controller
 {
@@ -16,10 +17,9 @@ class FrontController extends Controller
     public function index(){
 
         //récupère le nombre de produit de la sélection
-        $count = Product::count();
+        $count = Product::published()->count();
 
-        //récupère tous les produits par 6 du plus récent au moins récent
-		$products = Product::orderBy('created_at', 'desc')->paginate($this->paginate);
+        $products = Product::orderBy('created_at', 'desc')->published()->paginate($this->paginate);
 
         return view('front.index', ['products' => $products], ['count' => $count]);
 
@@ -28,9 +28,9 @@ class FrontController extends Controller
     //fonction indexMen qui va renvoyer dans une vue tous les produits de la catégorie homme, page Homme
     public function indexMen(){
 
-        $count = Product::men()->count();
+        $count = Product::men()->published()->count();
 
-        $products = Product::orderBy('created_at', 'desc')->men()->paginate($this->paginate);
+        $products = Product::orderBy('created_at', 'desc')->published()->men()->paginate($this->paginate);
 
         return view('front.index', ['products' => $products], ['count' => $count]);
 
@@ -39,9 +39,9 @@ class FrontController extends Controller
     //fonction indexWomen qui va renvoyer dans une vue tous les produits de la catégorie femme, page Homme
     public function indexWomen(){
 
-        $count = Product::women()->count();
+        $count = Product::women()->published()->count();
 
-        $products = Product::orderBy('created_at', 'desc')->women()->paginate($this->paginate);
+        $products = Product::orderBy('created_at', 'desc')->published()->women()->paginate($this->paginate);
 
         return view('front.index', ['products' => $products], ['count' => $count]);
 
@@ -50,9 +50,9 @@ class FrontController extends Controller
     //fonction indexSale qui va renvoyer dans une vue tous les produits de la catégorie sale, page Sale
     public function indexSale(){
 
-        $count = Product::sale()->count();
+        $count = Product::sale()->published()->count();
 
-        $products = Product::orderBy('created_at', 'asc')->sale()->paginate($this->paginate);
+        $products = Product::orderBy('created_at', 'asc')->published()->sale()->paginate($this->paginate);
 
         return view('front.index', ['products' => $products], ['count' => $count]);
 

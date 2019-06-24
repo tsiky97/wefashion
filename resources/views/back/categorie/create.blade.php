@@ -15,7 +15,7 @@
       </div>
     </div>
 
-    <button type="submit" class="btn btn-primary">Ajouter</button>
+    <button type="submit" class="btn btn-primary float-right">Ajouter</button>
 
   </form>
 

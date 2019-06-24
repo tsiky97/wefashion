@@ -29,9 +29,6 @@ class ProductTableSeeder extends Seeder
         App\Size::create([
         	'name' => 'XL'
         ]);
-        App\Size::create([
-        	'name' => 'XXL'
-        ]);
 
         App\Categorie::create([
         	'name' => 'Femme'
@@ -44,7 +41,7 @@ class ProductTableSeeder extends Seeder
         factory(App\Product::class, 80)->create()->each(function($product) {
 
             //association un size et une categorie à un produit que nous venons de créer
-        	$size = App\Size::find(rand(1,6));
+        	$size = App\Size::find(rand(1,5));
         	$categorie = App\Categorie::find(rand(1,2));
 
             //pour chaque $product on lui associe un size et une categorie en particulier

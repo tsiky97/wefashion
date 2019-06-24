@@ -49178,6 +49178,17 @@ module.exports = function(module) {
 
 /***/ }),
 
+/***/ "./resources/assets/css/app-complement.less":
+/*!**************************************************!*\
+  !*** ./resources/assets/css/app-complement.less ***!
+  \**************************************************/
+/*! no static exports found */
+/***/ (function(module, exports) {
+
+// removed by extract-text-webpack-plugin
+
+/***/ }),
+
 /***/ "./resources/assets/js/app.js":
 /*!************************************!*\
   !*** ./resources/assets/js/app.js ***!
@@ -49355,13 +49366,14 @@ __webpack_require__.r(__webpack_exports__);
 /***/ }),
 
 /***/ 0:
-/*!********************************************************************!*\
-  !*** multi ./resources/assets/js/app.js ./resources/sass/app.scss ***!
-  \********************************************************************/
+/*!***************************************************************************************************************!*\
+  !*** multi ./resources/assets/js/app.js ./resources/assets/css/app-complement.less ./resources/sass/app.scss ***!
+  \***************************************************************************************************************/
 /*! no static exports found */
 /***/ (function(module, exports, __webpack_require__) {
 
 __webpack_require__(/*! c:\xampp2\htdocs\wefashion\resources\assets\js\app.js */"./resources/assets/js/app.js");
+__webpack_require__(/*! c:\xampp2\htdocs\wefashion\resources\assets\css\app-complement.less */"./resources/assets/css/app-complement.less");
 module.exports = __webpack_require__(/*! c:\xampp2\htdocs\wefashion\resources\sass\app.scss */"./resources/sass/app.scss");
 
 

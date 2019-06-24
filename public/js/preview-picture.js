@@ -81,34 +81,44 @@
 /******/
 /******/
 /******/ 	// Load entry module and return exports
-/******/ 	return __webpack_require__(__webpack_require__.s = 1);
+/******/ 	return __webpack_require__(__webpack_require__.s = 2);
 /******/ })
 /************************************************************************/
 /******/ ({
 
-/***/ "./resources/assets/js/confirm.js":
-/*!****************************************!*\
-  !*** ./resources/assets/js/confirm.js ***!
-  \****************************************/
+/***/ "./resources/assets/js/preview-picture.js":
+/*!************************************************!*\
+  !*** ./resources/assets/js/preview-picture.js ***!
+  \************************************************/
 /*! no static exports found */
 /***/ (function(module, exports) {
 
-(function () {
-  $('.delete').on('submit', function () {
-    return confirm("Voulez-vous supprimer ce produit ?");
-  });
-})($);
+function readURL(input) {
+  if (input.files && input.files[0]) {
+    var reader = new FileReader();
+
+    reader.onload = function (e) {
+      $('#preview-picture').attr('src', e.target.result);
+    };
+
+    reader.readAsDataURL(input.files[0]);
+  }
+}
+
+$("#picture").change(function () {
+  readURL(this);
+});
 
 /***/ }),
 
-/***/ 1:
-/*!**********************************************!*\
-  !*** multi ./resources/assets/js/confirm.js ***!
-  \**********************************************/
+/***/ 2:
+/*!******************************************************!*\
+  !*** multi ./resources/assets/js/preview-picture.js ***!
+  \******************************************************/
 /*! no static exports found */
 /***/ (function(module, exports, __webpack_require__) {
 
-module.exports = __webpack_require__(/*! c:\xampp2\htdocs\wefashion\resources\assets\js\confirm.js */"./resources/assets/js/confirm.js");
+module.exports = __webpack_require__(/*! c:\xampp2\htdocs\wefashion\resources\assets\js\preview-picture.js */"./resources/assets/js/preview-picture.js");
 
 
 /***/ })

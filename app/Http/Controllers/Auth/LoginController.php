@@ -38,6 +38,6 @@ class LoginController extends Controller
     }
 
     protected function redirectTo() {
-        return '/admin/product';
+        return '/admin';
     }
 }

@@ -17,7 +17,7 @@ class AlterProductsTable extends Migration
             $table->unsignedInteger('size_id');
             $table->foreign('size_id')->references('id')->on('sizes'); // ajout d'une clé étrangère 'size_id' qui renvoie à la table size (id) après avoir créer la table size
             $table->unsignedInteger('categorie_id');
-            $table->foreign('categorie_id')->references('id')->on('categories'); // ajout d'une clé étrangère 'categorie_id' qui renvoie à la table categorie (id) après avoir créer la table categorie
+            $table->foreign('categorie_id')->references('id')->on('categories')->onDelete('cascade'); // ajout d'une clé étrangère 'categorie_id' qui renvoie à la table categorie (id) après avoir créer la table categorie
         });
     }
 

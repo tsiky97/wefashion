@@ -3,8 +3,8 @@
 	@section('content')
 
 		<div class="container">
-			<h1>Tous les derniers produits</h1>
-			<p>{{$count}} articles.</p>
+			<h1>Tous les derniers produits.</h1>
+			<p class="text-right">{{$count}} articles.</p>
 			<div class="row">
 				<div class="col">
 					<div class="row">

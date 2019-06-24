@@ -15,14 +15,14 @@
             <h1 class="card-title">{{$product->name}}</h1>
             <h4>{{$product->price}}€</h4>
             <p class="card-text">{{$product->description}}</p>
-            <select id="size" name="size_id" class="custom-select custom-select-sm">
+            <select name="size_id" class="custom-select custom-select-sm">
               <option selected>Choisissez votre taille</option>
               @foreach($sizes as $id => $name)
               <option value="{{$id}}">{{$name}}</option>
               @endforeach
             </select>
 
-            <button type="button" class="btn btn-primary">Acheter</button>
+            <button type="button" class="btn btn-primary buy-product">Acheter</button>
           </div>
         </div>
         @else

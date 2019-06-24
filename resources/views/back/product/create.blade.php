@@ -2,7 +2,7 @@
 
   @section('content')
 
-  <form method="post" action="{{route('product.store')}}" enctype="multipart/form-data">
+  <form method="post" action="{{route('admin.store')}}" enctype="multipart/form-data">
     {{ csrf_field() }}
 
     <h1>Ajouter un nouveau produit</h1>
@@ -77,7 +77,7 @@
           </label>
         </div>
         <div class="form-check">
-          <input class="form-check-input" @if(old('visibility')=='Non-Publié') checked @endif type="radio" name="visibility" value="Non-Publié">
+          <input class="form-check-input" @if(old('visibility')=='Non-publié') checked @endif type="radio" name="visibility" value="Non-publié">
           <label class="form-check-label" for="Non-publié">
             Non-publié
           </label>
@@ -86,14 +86,20 @@
       <div class="form-group col-md-6">
         <div class="custom-file d-inline align-bottom">
           <input type="file" class="custom-file-input" id="picture" name="picture" accept="image/png, image/jpeg, image/jpg">
-          <label class="custom-file-label" for="picture" >Choisissez une image pour votre image</label>
+          <label class="custom-file-label" id="label-picture" for="picture" >Choisissez une image pour votre image</label>
           @if($errors->has('picture'))<div class="alert alert-danger" role="alert">{{$errors->first('picture')}}</div>@endif
+          <img width="300" src="" id="preview-picture" alt="Image uploadé">
         </div>
       </div>
     </div>
 
-    <button type="submit" class="btn btn-primary">Ajouter</button>
+    <button type="submit" class="btn btn-primary float-right">Ajouter</button>
 
   </form>
 
 @endsection 
+
+@section('scripts')
+  @parent
+  <script src="{{asset('js/preview-picture.js')}}"></script>
+@endsection

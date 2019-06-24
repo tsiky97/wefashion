@@ -16,7 +16,7 @@
       </div>
     </div>
 
-    <button type="submit" class="btn btn-primary">Modifier</button>
+    <button type="submit" class="btn btn-primary float-right">Modifier</button>
 
   </form>
 

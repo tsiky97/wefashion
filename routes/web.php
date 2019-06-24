@@ -31,8 +31,8 @@ Auth::routes();
 Route::get('/home', 'HomeController@index')->name('home');
 
 //route sécurisée
-Route::resource('admin/product', 'ProductController')->middleware('auth');
-Route::resource('admin/categorie', 'CategorieController')->middleware('auth');
+Route::resource('/admin', 'ProductController')->middleware('auth');
+Route::resource('/categorie', 'CategorieController')->middleware('auth');
 
 //page d'une fiche produit côté admin
 Route::get('admin/product/{id}', 'ProductController@show')->where(['id' => '[0-9]+']);

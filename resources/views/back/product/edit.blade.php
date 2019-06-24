@@ -2,7 +2,7 @@
 
   @section('content')
 
-  <form method="post" action="{{route('product.update', $product->id)}}" enctype="multipart/form-data">
+  <form method="post" action="{{route('admin.update', $product->id)}}" enctype="multipart/form-data">
     {{ csrf_field() }}
     {{method_field('PUT')}}
 
@@ -78,7 +78,7 @@
           </label>
         </div>
         <div class="form-check">
-          <input class="form-check-input" @if(old('visibility')=='Non-Publié') checked @endif type="radio" name="visibility" value="Non-Publié">
+          <input class="form-check-input" @if(old('visibility')=='Non-publié') checked @endif type="radio" name="visibility" value="Non-publié">
           <label class="form-check-label" for="Non-publié">
             Non-publié
           </label>
@@ -96,7 +96,7 @@
       </div>
     </div>
 
-    <button type="submit" class="btn btn-primary">Modifier</button>
+    <button type="submit" class="btn btn-primary float-right">Modifier</button>
 
   </form>
 

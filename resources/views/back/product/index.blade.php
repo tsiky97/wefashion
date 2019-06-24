@@ -6,7 +6,7 @@
 
 		<h1>Tous les derniers produits</h1>
 
-		<button type="button" class="btn btn-primary create-product"><a href="{{route('product.create')}}">Nouveau</a></button>
+		<button type="button" class="btn btn-primary create-product"><a href="{{route('admin.create')}}">Nouveau</a></button>
 
 		<table class="table">
 			<thead>
@@ -32,8 +32,8 @@
 		                @endif
 		      		</td>
 				    <td>
-				    	<button type="button" class="btn btn-secondary button-modify"><a href="{{route('product.edit', $product->id)}}">Modifier</a></button>
-                		<form class="delete" method="POST" action="{{route('product.destroy', $product->id)}}">
+				    	<button type="button" class="btn btn-secondary button-modify"><a href="{{route('admin.edit', $product->id)}}">Modifier</a></button>
+                		<form class="delete" method="POST" action="{{route('admin.destroy', $product->id)}}">
 			                {{ method_field('DELETE') }}
 			                {{ csrf_field() }}
 			                <input class="btn btn-danger" type="submit" value="Supprimer" >

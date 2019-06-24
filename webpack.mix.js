@@ -13,6 +13,8 @@ const mix = require('laravel-mix');
 
 mix.js('resources/assets/js/app.js', 'public/js')
 	.js('resources/assets/js/confirm.js', 'public/js')
+    .js('resources/assets/js/preview-picture.js', 'public/js')
+    .less('resources/assets/css/app-complement.less', 'public/css')
     .sass('resources/sass/app.scss', 'public/css')
     .browserSync({
     	proxy: 'localhost: 8000',

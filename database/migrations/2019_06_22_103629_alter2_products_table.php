@@ -4,7 +4,7 @@ use Illuminate\Support\Facades\Schema;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Database\Migrations\Migration;
 
-class Alter3ProductsTable extends Migration
+class Alter2ProductsTable extends Migration
 {
     /**
      * Run the migrations.
@@ -14,6 +14,7 @@ class Alter3ProductsTable extends Migration
     public function up()
     {
         Schema::table('products', function (Blueprint $table) {
+            $table->enum('status', ['En solde', 'standard'])->default('En solde');
             $table->enum('visibility', ['Publié', 'Non-publié'])->default('Publié');
         });
     }
@@ -26,6 +27,7 @@ class Alter3ProductsTable extends Migration
     public function down()
     {
         Schema::table('products', function (Blueprint $table) {
+            $table->dropColumn('status');
             $table->dropColumn('visibility');
         });
     }

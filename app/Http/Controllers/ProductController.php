@@ -1,7 +1,8 @@
 <?php
 
 namespace App\Http\Controllers;
-
+use File;
+use Storage;
 use Illuminate\Http\Request;
 use App\Product;
 use App\Size;
@@ -19,7 +20,7 @@ class ProductController extends Controller
     //renvoie la page d'accueil de la partie admin
     public function index()
     {
-        $products = Product::paginate($this->paginate);
+        $products = Product::orderBy('created_at', 'desc')->paginate($this->paginate);
 
         return view('back.product.index', ['products' => $products]);
     }
@@ -58,7 +59,7 @@ class ProductController extends Controller
             'categorie_id' => 'integer',
             'status' => 'in:En solde,standard',
             'picture' => 'image|max:3000',
-            'visibility' => 'in:Publié,Non-Publié'
+            'visibility' => 'in:Publié,Non-publié'
         ]);
 
         $product = Product::create($request->all());
@@ -76,7 +77,7 @@ class ProductController extends Controller
             ]);
         }
 
-        return redirect()->route('product.index')->with('message', 'Le produit a bien été ajouté !');
+        return redirect()->route('admin.index')->with('message', 'Le produit a bien été ajouté !');
 
     }
 
@@ -131,7 +132,7 @@ class ProductController extends Controller
             'categorie_id' => 'integer',
             'status' => 'in:En solde,standard',
             'picture' => 'image|max:3000',
-            'visibility' => 'in:Publié,Non-Publié'
+            'visibility' => 'in:Publié,Non-publié'
         ]);
 
         $product = Product::find($id); // associé les fillables
@@ -148,7 +149,7 @@ class ProductController extends Controller
 
             // suppression de l'image si elle existe 
             if(count((array)$product->picture) > 0) {
-                Storage::disk('local')->delete($product->picture->link); // supprimer physiquement l'image
+                Storage::delete($product->picture->link); // supprimer physiquement l'image
                 $product->picture()->delete(); // supprimer l'information en base de données
             }
 
@@ -159,7 +160,7 @@ class ProductController extends Controller
             
         }
 
-        return redirect()->route('product.index')->with('message', 'Le produit a bien été modifié !');
+        return redirect()->route('admin.index')->with('message', 'Le produit a bien été modifié !');
     }
 
     /**
@@ -174,8 +175,16 @@ class ProductController extends Controller
     {
         $product = Product::find($id);
 
+        //pour supprimer l'image, je récupère le chemin et le fichier image associé au produit
+        $myFile = public_path().'/'.$product->picture->link;
+        
+        //si l'image existe bien, je la supprime du dossier
+        if (! Storage::exists($myFile)) {
+            Storage::delete($product->picture->link);
+        }
+
         $product->delete();
 
-        return redirect()->route('product.index')->with('message', 'Le produit a bien été supprimé.');
+        return redirect()->route('admin.index')->with('message', 'Le produit a bien été supprimé.');
     }
 }
